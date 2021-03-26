@@ -31,11 +31,4 @@ export const GlobalStyle = createGlobalStyle`
       font-size: 87.5%;
     }
   }
-
-  body {
-    height: 100vh;
-    background: linear-gradient(to bottom, var(--header-background) 0, var(--header-background) 25%,
-    var(--content-background) 25%, var(--content-background) 94%,
-    var(--footer-background) 94%, var(--footer-background) 100%);
-  }
 `;
