@@ -3,11 +3,11 @@ import { createGlobalStyle } from 'styled-components';
 export const GlobalStyle = createGlobalStyle`
   :root {
     --header-background: #f8f8f8;
-    --content-background: #D4d4d4;
+    --content-background: #D4D4D4;
     --footer-background: #6b6b6b;
 
     --card-background: #F0F0F0;
-    --card-border: #353535
+    --card-border: #bbbbbb;
 
     --black: #000;
     --white: #fff;
@@ -30,5 +30,9 @@ export const GlobalStyle = createGlobalStyle`
     @media (max-width:720px) {
       font-size: 87.5%;
     }
+  }
+
+  body{
+    background-color: var(--content-background);
   }
 `;
