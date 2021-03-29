@@ -51,9 +51,15 @@ export const Container = styled.div`
     border: none;
     cursor: pointer;
 
+    height: 60px;
+    width: 60px;
+
+    position: relative;
+    left: 82px;
+
     img {
-      height: 65px;
-      width: 65px;
+      height: 60px;
+      width: 60px;
     }
   }
 `;
