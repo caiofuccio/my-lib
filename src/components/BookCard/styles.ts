@@ -17,9 +17,9 @@ export const Container = styled.ul`
 
     font-size: 20px;
 
-    height: 150px;
+    height: 135px;
 
-    padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+    padding: 1.5rem 1.5rem 0.5rem 1.5rem;
 
     background-color: var(--card-background);
     border: 1px solid var(--card-border);
@@ -32,9 +32,5 @@ export const Container = styled.ul`
 
   & [data-pages] {
     font-size: 16px;
-  }
-
-  & input {
-    margin-top: 5px;
   }
 `;
