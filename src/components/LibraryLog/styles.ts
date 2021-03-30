@@ -61,5 +61,9 @@ export const Container = styled.div`
       height: 60px;
       width: 60px;
     }
+
+    &:hover {
+      opacity: 0.85;
+    }
   }
 `;

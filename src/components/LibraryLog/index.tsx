@@ -1,7 +1,11 @@
 import buttonImg from '../../assets/add-button.svg';
 import { Container } from './styles';
 
-export function LibraryLog() {
+interface LibraryLogProps {
+  onOpenNewBookModal: () => void;
+}
+
+export function LibraryLog({ onOpenNewBookModal }: LibraryLogProps) {
   return (
     <Container>
       <header>Seu registro</header>
@@ -28,7 +32,7 @@ export function LibraryLog() {
         </div>
       </div>
 
-      <button>
+      <button onClick={onOpenNewBookModal}>
         <img src={buttonImg} alt="Adicionar" />
       </button>
     </Container>
