@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Modal from 'react-modal';
+import { BooksProvider } from './BooksContext';
 import { BookShelf } from './components/Bookshelf';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
@@ -21,7 +22,7 @@ export function App() {
   }
 
   return (
-    <>
+    <BooksProvider>
       <Header />
 
       <div
@@ -42,7 +43,7 @@ export function App() {
       />
 
       <GlobalStyle />
-    </>
+    </BooksProvider>
   );
 }
 

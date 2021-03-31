@@ -1,6 +1,7 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useContext, useState } from 'react';
 import Modal from 'react-modal';
 import closeImg from '../../assets/close.svg';
+import { BooksContext } from '../../BooksContext';
 import { Container } from './styles';
 
 interface NewBookModalProps {
@@ -9,12 +10,33 @@ interface NewBookModalProps {
 }
 
 export function NewBookModal({ isOpen, onRequestClose }: NewBookModalProps) {
+  const { createNewBook } = useContext(BooksContext);
+
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [numberOfPages, setNumberOfPages] = useState(0);
 
   function handleCreateNewBook(event: FormEvent) {
+    if (!title || !author || !numberOfPages || numberOfPages === 0) {
+      throw new Error('Preencha todos os dados corretamente!');
+    }
+
     event.preventDefault();
+
+    const newBookInput = {
+      title: title,
+      author: author,
+      numberOfPages: numberOfPages,
+      isRead: false,
+    };
+
+    createNewBook(newBookInput);
+
+    setTitle('');
+    setAuthor('');
+    setNumberOfPages(0);
+
+    onRequestClose();
   }
 
   return (
