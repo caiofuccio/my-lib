@@ -16,7 +16,16 @@ interface BooksProviderProps {
 
 interface BooksContextData {
   library: Book[];
+  setLibrary: (library: Book[]) => void;
   createNewBook: (bookInput: BookInput) => void;
+  title: string;
+  setTitle: (title: string) => void;
+  author: string;
+  setAuthor: (title: string) => void;
+  numberOfPages: number;
+  setNumberOfPages: (number: number) => void;
+  isRead: boolean;
+  setIsRead: (read: boolean) => void;
 }
 
 export const BooksContext = createContext<BooksContextData>(
@@ -25,6 +34,11 @@ export const BooksContext = createContext<BooksContextData>(
 
 export function BooksProvider({ children }: BooksProviderProps) {
   const [library, setLibrary] = useState<Book[]>([]);
+
+  const [title, setTitle] = useState('');
+  const [author, setAuthor] = useState('');
+  const [numberOfPages, setNumberOfPages] = useState(0);
+  const [isRead, setIsRead] = useState(false);
 
   let randomNumbers: number[] = [];
 
@@ -49,7 +63,21 @@ export function BooksProvider({ children }: BooksProviderProps) {
   }
 
   return (
-    <BooksContext.Provider value={{ library, createNewBook }}>
+    <BooksContext.Provider
+      value={{
+        library,
+        setLibrary,
+        createNewBook,
+        title,
+        setTitle,
+        author,
+        setAuthor,
+        numberOfPages,
+        setNumberOfPages,
+        isRead,
+        setIsRead,
+      }}
+    >
       {children}
     </BooksContext.Provider>
   );

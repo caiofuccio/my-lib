@@ -1,12 +1,25 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
+import Switch from 'react-switch';
 import { BooksContext } from '../../BooksContext';
-import { Switch } from '../Switch';
 import { Container } from './styles';
 
 export function BookCard() {
-  const { library } = useContext(BooksContext);
+  const { library, setLibrary } = useContext(BooksContext);
 
-  const [isToggled, setIsToggled] = useState(false);
+  function handleToggleBookReadStatus(id: number) {
+    const newLibrary = library.map((book) => {
+      if (book.id === id) {
+        return {
+          ...book,
+          isRead: !book.isRead,
+        };
+      } else {
+        return book;
+      }
+    });
+
+    setLibrary(newLibrary);
+  }
 
   return (
     <Container>
@@ -14,10 +27,11 @@ export function BookCard() {
         <li key={book.id}>
           <h3 data-title>{book.title}</h3>
           <h3 data-author>{book.author}</h3>
-          <p data-pages>{book.numberOfPages}</p>
+          <p data-pages>{book.numberOfPages} páginas</p>
           <Switch
-            isToggled={isToggled}
-            onToggle={() => setIsToggled(!isToggled)}
+            checked={book.isRead}
+            onChange={() => handleToggleBookReadStatus(book.id)}
+            className="switch-button"
           />
         </li>
       ))}

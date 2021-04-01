@@ -1,4 +1,4 @@
-import { FormEvent, useContext, useState } from 'react';
+import { FormEvent, useContext } from 'react';
 import Modal from 'react-modal';
 import closeImg from '../../assets/close.svg';
 import { BooksContext } from '../../BooksContext';
@@ -10,11 +10,17 @@ interface NewBookModalProps {
 }
 
 export function NewBookModal({ isOpen, onRequestClose }: NewBookModalProps) {
-  const { createNewBook } = useContext(BooksContext);
-
-  const [title, setTitle] = useState('');
-  const [author, setAuthor] = useState('');
-  const [numberOfPages, setNumberOfPages] = useState(0);
+  const {
+    createNewBook,
+    title,
+    setTitle,
+    author,
+    setAuthor,
+    numberOfPages,
+    setNumberOfPages,
+    isRead,
+    setIsRead,
+  } = useContext(BooksContext);
 
   function handleCreateNewBook(event: FormEvent) {
     if (!title || !author || !numberOfPages || numberOfPages === 0) {
@@ -27,7 +33,7 @@ export function NewBookModal({ isOpen, onRequestClose }: NewBookModalProps) {
       title: title,
       author: author,
       numberOfPages: numberOfPages,
-      isRead: false,
+      isRead: isRead,
     };
 
     createNewBook(newBookInput);
@@ -35,6 +41,7 @@ export function NewBookModal({ isOpen, onRequestClose }: NewBookModalProps) {
     setTitle('');
     setAuthor('');
     setNumberOfPages(0);
+    setIsRead(false);
 
     onRequestClose();
   }
@@ -57,23 +64,32 @@ export function NewBookModal({ isOpen, onRequestClose }: NewBookModalProps) {
       <Container onSubmit={handleCreateNewBook}>
         <h3>Cadastrar livro</h3>
 
+        <label>Título</label>
         <input
           type="text"
-          placeholder="Título"
+          placeholder="Insira aqui o título da obra"
           value={title}
           onChange={(event) => setTitle(event.target.value)}
         />
+        <label>Autor(a)</label>
         <input
           type="text"
-          placeholder="Autor(a)"
+          placeholder="Insira aqui o nome do autor(a)"
           value={author}
           onChange={(event) => setAuthor(event.target.value)}
         />
+        <label>Número de páginas</label>
         <input
           type="number"
-          placeholder="Número de páginas"
+          placeholder="Insira aqui a quantidade de páginas"
           value={numberOfPages}
           onChange={(event) => setNumberOfPages(Number(event.target.value))}
+        />
+        <label className="is-read-label">Já lido?</label>
+        <input
+          type="checkbox"
+          checked={isRead}
+          onChange={(event) => setIsRead(event.target.checked)}
         />
 
         <button type="submit">Cadastrar</button>

@@ -8,6 +8,14 @@ export const Container = styled.form`
     margin-bottom: 2rem;
   }
 
+  label {
+    font-size: 1rem;
+  }
+
+  .is-read-label {
+    margin-right: 1.25rem;
+  }
+
   input {
     width: 100%;
     padding: 0 1rem;
@@ -19,14 +27,22 @@ export const Container = styled.form`
 
     font-size: 1rem;
 
+    margin-bottom: 0.5rem;
+    margin-top: 0.25rem;
+
     &::placeholder {
       color: var(--dark-gray);
       opacity: 0.6;
     }
+  }
 
-    & + input {
-      margin-top: 1rem;
-    }
+  input[type='checkbox'] {
+    display: inline-block;
+
+    width: 1rem;
+    height: 1rem;
+
+    vertical-align: middle;
   }
 
   button[type='submit'] {

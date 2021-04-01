@@ -6,7 +6,7 @@ export const Container = styled.ul`
   max-width: 60rem;
 
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
+  grid-gap: 1.25rem;
 
   li {
     display: flex;
@@ -15,9 +15,9 @@ export const Container = styled.ul`
     justify-content: space-around;
     font-family: 'Oswald', sans-serif;
 
-    font-size: 20px;
+    font-size: 1.25rem;
 
-    height: 135px;
+    height: 8.5rem;
 
     padding: 1.5rem 1.5rem 0.5rem 1.5rem;
 
@@ -31,6 +31,13 @@ export const Container = styled.ul`
   }
 
   & [data-pages] {
-    font-size: 16px;
+    font-size: 1rem;
+    padding-top: 0.5rem;
+  }
+
+  .switch-button {
+    position: relative;
+    left: 13rem;
+    bottom: 1rem;
   }
 `;
