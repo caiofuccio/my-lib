@@ -17,7 +17,7 @@ export const Container = styled.ul`
 
     font-size: 1.25rem;
 
-    height: 8.5rem;
+    height: 11rem;
 
     padding: 1.5rem 1.5rem 0.5rem 1.5rem;
 
