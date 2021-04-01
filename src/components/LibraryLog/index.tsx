@@ -1,4 +1,6 @@
+import { useContext } from 'react';
 import buttonImg from '../../assets/add-button.svg';
+import { BooksContext } from '../../BooksContext';
 import { Container } from './styles';
 
 interface LibraryLogProps {
@@ -6,6 +8,29 @@ interface LibraryLogProps {
 }
 
 export function LibraryLog({ onOpenNewBookModal }: LibraryLogProps) {
+  const { library } = useContext(BooksContext);
+
+  const libraryLog = library.reduce(
+    (acc, book) => {
+      acc.totalBooks += 1;
+
+      if (book.isRead === true) {
+        acc.readBooks += 1;
+        acc.totalPages += book.numberOfPages;
+      } else {
+        acc.unreadBooks += 1;
+      }
+
+      return acc;
+    },
+    {
+      totalBooks: 0,
+      readBooks: 0,
+      unreadBooks: 0,
+      totalPages: 0,
+    }
+  );
+
   return (
     <Container>
       <header>Seu registro</header>
@@ -13,22 +38,22 @@ export function LibraryLog({ onOpenNewBookModal }: LibraryLogProps) {
       <div className="data-container">
         <div className="totalOfBooks">
           <p>Total de livros</p>
-          <p>1</p>
+          <p>{libraryLog.totalBooks}</p>
         </div>
 
         <div className="read-books">
           <p>Lidos</p>
-          <p>1</p>
+          <p>{libraryLog.readBooks}</p>
         </div>
 
         <div className="not-read-books">
           <p>Não lidos</p>
-          <p>0</p>
+          <p>{libraryLog.unreadBooks}</p>
         </div>
 
         <div className="read-pages">
           <p>Páginas lidas</p>
-          <p>694</p>
+          <p>{libraryLog.totalPages}</p>
         </div>
       </div>
 
