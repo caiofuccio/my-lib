@@ -22,10 +22,12 @@ export function BookCard() {
     setLibrary(newLibrary);
   }
 
-  function handleBookDelete(id: number) {
-    const filteredLibrary = library.filter((book) => book.id !== id);
+  function handleBookDelete(id: number, title: string) {
+    if (window.confirm(`Você tem certeza que deseja apagar ${title}?`)) {
+      const filteredLibrary = library.filter((book) => book.id !== id);
 
-    setLibrary(filteredLibrary);
+      setLibrary(filteredLibrary);
+    } else return;
   }
 
   return (
@@ -34,7 +36,7 @@ export function BookCard() {
         <li key={book.id}>
           <button
             type="button"
-            onClick={() => handleBookDelete(book.id)}
+            onClick={() => handleBookDelete(book.id, book.title)}
             className="delete-book"
           >
             <img src={deleteImg} alt="Deletar" />
