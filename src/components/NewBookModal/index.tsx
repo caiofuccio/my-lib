@@ -1,7 +1,7 @@
 import { FormEvent, useContext } from 'react';
 import Modal from 'react-modal';
 import closeImg from '../../assets/close.svg';
-import { BooksContext } from '../../BooksContext';
+import { BooksContext } from '../../contexts/BooksContext';
 import { Container } from './styles';
 
 interface NewBookModalProps {

@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import buttonImg from '../../assets/add-button.svg';
-import { BooksContext } from '../../BooksContext';
+import { BooksContext } from '../../contexts/BooksContext';
 import { Container } from './styles';
 
 interface LibraryLogProps {

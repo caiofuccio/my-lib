@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import Switch from 'react-switch';
 import deleteImg from '../../assets/close.svg';
-import { BooksContext } from '../../BooksContext';
+import { BooksContext } from '../../contexts/BooksContext';
 import { Container } from './styles';
 
 export function BookCard() {

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
-import { BooksProvider } from './BooksContext';
 import { BookShelf } from './components/Bookshelf';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { LibraryLog } from './components/LibraryLog';
 import { NewBookModal } from './components/NewBookModal';
+import { BooksProvider } from './contexts/BooksContext';
 import { GlobalStyle } from './styles/global';
 
 Modal.setAppElement('#root');
