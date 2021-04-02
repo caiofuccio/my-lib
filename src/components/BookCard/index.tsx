@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import Switch from 'react-switch';
+import deleteImg from '../../assets/close.svg';
 import { BooksContext } from '../../BooksContext';
 import { Container } from './styles';
 
@@ -21,10 +22,23 @@ export function BookCard() {
     setLibrary(newLibrary);
   }
 
+  function handleBookDelete(id: number) {
+    const filteredLibrary = library.filter((book) => book.id !== id);
+
+    setLibrary(filteredLibrary);
+  }
+
   return (
     <Container>
       {library.map((book) => (
         <li key={book.id}>
+          <button
+            type="button"
+            onClick={() => handleBookDelete(book.id)}
+            className="delete-book"
+          >
+            <img src={deleteImg} alt="Deletar" />
+          </button>
           <h3 data-title>{book.title}</h3>
           <h3 data-author>{book.author}</h3>
           <p data-pages>{book.numberOfPages} páginas</p>
