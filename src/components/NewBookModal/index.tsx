@@ -23,8 +23,9 @@ export function NewBookModal({ isOpen, onRequestClose }: NewBookModalProps) {
   } = useContext(BooksContext);
 
   function handleCreateNewBook(event: FormEvent) {
-    if (!title || !author || !numberOfPages || numberOfPages === 0) {
-      throw new Error('Preencha todos os dados corretamente!');
+    if (!title || !author || numberOfPages <= 0) {
+      alert('Preencha todos os dados corretamente!');
+      return;
     }
 
     event.preventDefault();
