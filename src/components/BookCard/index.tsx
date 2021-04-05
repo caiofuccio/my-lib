@@ -20,6 +20,8 @@ export function BookCard() {
     });
 
     setLibrary(newLibrary);
+
+    localStorage.setItem('@my-lib: cart', JSON.stringify(newLibrary));
   }
 
   function handleBookDelete(id: number, title: string) {
@@ -27,6 +29,8 @@ export function BookCard() {
       const filteredLibrary = library.filter((book) => book.id !== id);
 
       setLibrary(filteredLibrary);
+
+      localStorage.setItem('@my-lib: cart', JSON.stringify(filteredLibrary));
     } else return;
   }
 

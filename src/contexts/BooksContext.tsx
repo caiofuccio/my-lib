@@ -32,8 +32,16 @@ export const BooksContext = createContext<BooksContextData>(
   {} as BooksContextData
 );
 
-export function BooksProvider({ children }: BooksProviderProps) {
-  const [library, setLibrary] = useState<Book[]>([]);
+export function BooksProvider({ children }: BooksProviderProps): JSX.Element {
+  const [library, setLibrary] = useState<Book[]>(() => {
+    const storedLib = localStorage.getItem('@my-lib: cart');
+
+    if (storedLib) {
+      return JSON.parse(storedLib);
+    }
+
+    return [];
+  });
 
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
@@ -59,7 +67,11 @@ export function BooksProvider({ children }: BooksProviderProps) {
       id: getNonRepeatRandomNumber(),
     };
 
-    setLibrary((prevState) => [...prevState, newBook]);
+    const newLibrary = [...library, newBook];
+
+    setLibrary(newLibrary);
+
+    localStorage.setItem('@my-lib: cart', JSON.stringify(newLibrary));
   }
 
   return (
