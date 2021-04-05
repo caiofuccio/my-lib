@@ -42,8 +42,8 @@ Esse projeto foi criado utilizando ReactJS.
 - [x] Adição de livros através de um formulário em um modal.
 - [x] Remoção dos livros cadastrados a partir de um botão no card.
 - [x] Renderização dinâmica dos dados apresentados no registro.
+- [x] Persistência dos dados inseridos usando localStorage.
 - [ ] Criação de um design responsivo para diferentes telas.
-- [ ] Persistência dos dados inseridos em localStorage ou Cloud.
 
 ---
 
@@ -62,6 +62,7 @@ Esse projeto foi criado utilizando ReactJS.
 
     # Instale as dependências
     $ yarn
+      npm
 
     # Execute a aplicação no modo de desenvolvimento
     $ yarn start
